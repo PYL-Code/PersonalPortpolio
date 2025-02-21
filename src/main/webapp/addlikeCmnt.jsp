@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%
-String post_txt = request.getParameter("post_txt");
-String post_img = request.getParameter("post_img");
+String post_no = request.getParameter("post_no");
+String cmnt_no = request.getParameter("cmnt_no");
 
 String url = "jdbc:mysql://localhost:3306/spring5fs";
-String sql = "insert into post (post_img, post_txt, post_date) values (null, '"+ post_txt +"', current_date())";
+String sql = "update cmnt set cmnt_like=cmnt_like+1 where cmnt_no=" + cmnt_no;
 Connection conn = null;
 Statement stmt = null;
 ResultSet rset = null;
@@ -23,5 +23,5 @@ try{
 	if(stmt != null) {try {stmt.close(); } catch(SQLException e) {e.printStackTrace();}}
 	if(conn != null) {try {conn.close(); } catch(SQLException e) {e.printStackTrace();}}
 }
-response.sendRedirect("index.jsp");
+response.sendRedirect("viewPost.jsp?post_no=" + post_no);
 %>

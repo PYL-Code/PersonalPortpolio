@@ -31,9 +31,7 @@ try{
 </head>
 <body>
 <div class="header">
-	<a href="index.jsp">Instagram</a>
-	<a href="login.jsp"><button>로그인</button></a>
-	<a href="signup.jsp"><button>가입하기</button></a>
+	<!-- 로그인 정보 -->
 </div>
 <div class="post">
 	<form action="editPost.jsp">

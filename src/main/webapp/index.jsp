@@ -4,6 +4,10 @@
 <%
 String url = "jdbc:mysql://localhost:3306/spring5fs";
 String sql_post = "select * from post";
+
+Connection conn = null;
+Statement stmt = null;
+ResultSet rset = null;
 %>
 <!DOCTYPE html>
 <html>
@@ -20,8 +24,8 @@ String sql_post = "select * from post";
 <body>
 <div class="header">
 	<a href="index.jsp">Instagram</a>
-	<a href="login.jsp"><button>로그인</button></a>
-	<a href="signup.jsp"><button>가입하기</button></a>
+	<a href="login_form.jsp"><button>로그인</button></a>
+	<a href="signup_form.jsp"><button>가입하기</button></a>
 </div>
 <div class="info">
 	<img alt="profile_picture" src="https://placehold.co/200x200"/>
@@ -46,9 +50,9 @@ String sql_post = "select * from post";
 <%
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(url, "root", "1234");
-		Statement stmt = conn.createStatement();
-		ResultSet rset = stmt.executeQuery(sql_post);
+		conn = DriverManager.getConnection(url, "root", "1234");
+		stmt = conn.createStatement();
+		rset = stmt.executeQuery(sql_post);
 			
 		while(rset.next()){
 			%>
@@ -57,6 +61,10 @@ String sql_post = "select * from post";
 		}
 	}catch(Exception e) {
 		e.printStackTrace();
+	} finally {
+		if(rset != null) {try {rset.close(); } catch(SQLException e) {e.printStackTrace();}}
+		if(stmt != null) {try {stmt.close(); } catch(SQLException e) {e.printStackTrace();}}
+		if(conn != null) {try {conn.close(); } catch(SQLException e) {e.printStackTrace();}}
 	}
 %>
 </div>
