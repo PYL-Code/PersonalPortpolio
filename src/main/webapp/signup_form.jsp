@@ -14,12 +14,14 @@
 	<div>
 		<span>Instagram</span>
 		<form action="signup.jsp">
-			<input type="text" name="userid" placeholder="아이디"/>
-			<input type="text" name="password" placeholder="비밀번호" />
+			<input type="text" name="userid" placeholder="아이디" />
+			<input type="text" name="nickname" placeholder="닉네임" />
+			<input type="password" name="password" placeholder="비밀번호" />
 			<input type="submit" value="가입" />
 		</form>
 	</div>
 	<div>
+		<span>기존에 사용 중이거나 사용 예정인 아이디나 비밀번호를 절대 사용하지 마세요.</span>
 		<span>계정이 있으신가요?</span>
 		<a href="login_form.jsp">로그인</a>
 	</div>
