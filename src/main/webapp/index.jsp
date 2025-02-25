@@ -189,7 +189,7 @@ try {
             <span>게시물 <%=postcount %></span><span>팔로워 3.14천</span><span>팔로우 314</span>
         </div>
         <div>
-            <span>박예림</span>
+            <span>박예림</span><br>
             <span>개발자</span>
         </div>
     </div>

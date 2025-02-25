@@ -102,116 +102,116 @@ int cmnt_like=0;
 	    color: #0095f6;
 	}
 	.container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 120px;
-    gap: 20px; /* 게시물과 댓글 사이 간격 */
-}
-	.viewpost {
-    width: 500px;
-    background: white;
-    border: 1px solid #dbdbdb;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 120px;
-}
-
-.userinfo {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-    border-bottom: 1px solid #dbdbdb;
-}
-
-.userinfo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.userinfo a img {
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-}
-
-.post img {
-    width: 100%;
-    object-fit: cover;
-}
-
-.post {
-    padding: 10px;
-}
-
-.post span {
-    display: block;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.viewCmnt {
-    padding: 10px;
-}
-
-.viewCmnt div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-}
-
-.viewCmnt img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
-
-.writecmnt {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #dbdbdb;
-}
-
-.writecmnt input[type="text"] {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #dbdbdb;
-    border-radius: 20px;
-    padding-left: 15px;
-}
-
-.writecmnt input[type="submit"] {
-    background-color: #0095f6;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 20px;
-    margin-left: 5px;
-}
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin-top: 120px;
+		width: 80%; /* Adjust width to make layout responsive */
+	}
+	.viewpostimg {
+		width: 50%;
+		display: flex;
+		justify-content: center;
+	}
+	.viewpostimg img {
+		width: 100%;
+		max-width: 500px;
+		height: auto;
+		border-radius: 10px;
+	}
+	.viewpostdetail {
+		width: 50%;
+		padding-left: 20px; /* Spacing between image and details */
+	}
+	.viewuserinfo {
+		display: flex;
+		align-items: center;
+		margin-bottom: 15px;
+	}
+	.viewuserinfo img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+	.viewuserinfo span {
+		font-weight: bold;
+		color: #262626;
+		font-size: 14px;
+	}
+	.viewpostinfo {
+		margin-top: 10px;
+	}
+	.viewpostinfo span {
+		font-size: 14px;
+		color: #262626;
+		display: block;
+	}
+	.viewCmnt {
+		margin-top: 20px;
+		border-top: 1px solid #dbdbdb;
+		padding-top: 10px;
+	}
+	.cmntinfo {
+		display: flex;
+		align-items: center;
+		margin-bottom: 15px;
+		padding: 10px 0;
+		border-bottom: 1px solid #f1f1f1;
+	}
+	.cmntinfo img {
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+	.cmntinfo span {
+		font-size: 14px;
+		color: #262626;
+	}
+	.writecmnt {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.writecmnt input[type="text"] {
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 10px;
+		border: 1px solid #dbdbdb;
+		border-radius: 5px;
+		font-size: 14px;
+	}
+	.writecmnt input[type="submit"] {
+		background-color: #0095f6;
+		color: white;
+		border: none;
+		padding: 8px 15px;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 14px;
+	}
     .footer {
-        bottom: 0;
-        text-align: center;
-        font-size: 12px;
-        color: #8e8e8e;
-        width: 100%;
-        border-top: 1px solid #dbdbdb;
-        padding-top: 10px;
-        margin-top: 30px;
-    }
-    .footer a {
-        text-decoration: none;
-        color: #8e8e8e;
-        margin: 0 5px;
-    }
-    .footer p {
-        margin-top: 10px;
-    }
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #8e8e8e;
+    width: 100%;
+    border-top: 1px solid #dbdbdb; /* 상단 border 추가 */
+    padding-top: 10px; /* border와 내용 간격 */
+	}
+	
+	.footer a {
+	    text-decoration: none;
+	    color: #8e8e8e;
+	    margin: 0 5px;
+	}
+	
+	.footer p {
+	    margin-top: 10px; /* a 태그와 간격 추가 */
+	}
 </style>
 
 </head>
@@ -234,15 +234,18 @@ int cmnt_like=0;
     %>
     </div>
 </div>
+
 <div class="container">
-	<div class="viewpost">
-		<div class="userinfo">
-		<img src="https://placehold.co/50x50"/>
-		<span>314_lim</span>
-		<a href="editPost_form.jsp?post_no=<%=post_no %>"><img src="./img/352548_three dots_icon.png" /></a>
+	<div class="viewpostimg">
+		<img src="https://placehold.co/750x750" />	
+	</div>
+	<div class="viewpostdetail">
+		<div class="viewuserinfo">
+			<img src="https://placehold.co/50x50"/>
+			<span>314_lim</span>
+			<a href="editPost_form.jsp?post_no=<%=post_no %>"><img src="./img/352548_three dots_icon.png" /></a>
 		</div>
-		<div class="post">
-			<img src="https://placehold.co/750x750" />
+		<div class="viewpostinfo">
 			<div>
 				<span><%=post_txt %></span>
 			</div>
@@ -258,7 +261,7 @@ int cmnt_like=0;
 			</div>
 		</div>
 		<div class="viewCmnt">
-	<%
+	<%	
 	try{
 		stmt = conn.createStatement();
 		rset = stmt.executeQuery(sql_cmnt);
@@ -303,6 +306,7 @@ int cmnt_like=0;
 		</div>
 	</div>
 </div>
+
 <div class="footer">
 	<a href="#">소개</a>
 	<a href="#">블로그</a>
