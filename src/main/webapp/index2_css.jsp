@@ -114,7 +114,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="index.jsp">Instagram</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
         <div>
             <button>로그인</button>
             <button>가입하기</button>

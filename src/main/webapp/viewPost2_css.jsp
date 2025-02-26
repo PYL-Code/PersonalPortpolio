@@ -217,7 +217,7 @@ int cmnt_like=0;
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
     <div>
     <% 
     	if (userid == null) {

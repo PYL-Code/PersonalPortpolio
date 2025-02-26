@@ -119,7 +119,7 @@
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
 </div>
 <div class="login-container">
     <span>Instagram</span>

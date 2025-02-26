@@ -7,6 +7,13 @@ String nickname = (String) session.getAttribute("nickname");
 
 String post_no = request.getParameter("post_no");
 
+
+if(userid == null || !userid.equals("admin")) {
+	String pastUrl = request.getHeader("referer");
+	response.sendRedirect(pastUrl);
+}
+
+
 String url = "jdbc:mysql://localhost:3306/spring5fs";
 String sql_post = "select * from post where post_no=" + post_no;
 
@@ -94,18 +101,18 @@ try{
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
     <div>
     <% 
     	if (userid == null) {
     %>
-        <a href="login_form.jsp"><button>로그인</button></a>
-        <a href="signup_form.jsp"><button>가입하기</button></a>
+        <a href="login/login_form.jsp"><button>로그인</button></a>
+        <a href="login/signup_form.jsp"><button>가입하기</button></a>
     <%
     	} else {
     %>
     	<span>안녕하세요, <%=nickname %>님</span>
-    	<a class="logout" href="logout.jsp">로그아웃</a>
+    	<a class="logout" href="login/logout.jsp">로그아웃</a>
     <%	
     	}
     %>

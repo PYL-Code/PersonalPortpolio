@@ -5,8 +5,6 @@
 	String userid = request.getParameter("userid");
 	String password = request.getParameter("password");
 	
-	String signupCheck = request.getParameter("signupCheck");
-	
 	String url = "jdbc:mysql://localhost:3306/spring5fs";
 	String sql = "select * from users where user_id=? ";
 	Connection conn = null;
@@ -43,14 +41,7 @@
 		session.setAttribute("nickname", user_nick);
 		//System.out.println("로그인 성공!");
 		
-		if (signupCheck.equals("y")) {
-			response.sendRedirect("index.jsp");
-			
-		} else {
-		%>
-			<script>history.go(-2);</script>
-		<%
-		}
+		response.sendRedirect("../index.jsp");
 	} else {
 	%>
 		<script>alert("잘못된 아이디 혹은 비밀번호입니다.");</script>

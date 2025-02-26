@@ -3,6 +3,10 @@
 <%
 String userid = (String) session.getAttribute("userid");
 String nickname = (String) session.getAttribute("nickname");
+
+if(userid == null || !userid.equals("admin")) {
+	response.sendRedirect("index.jsp");
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -71,18 +75,18 @@ String nickname = (String) session.getAttribute("nickname");
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
     <div>
     <% 
     	if (userid == null) {
     %>
-        <a href="login_form.jsp"><button>로그인</button></a>
-        <a href="signup_form.jsp"><button>가입하기</button></a>
+        <a href="login/login_form.jsp"><button>로그인</button></a>
+        <a href="login/signup_form.jsp"><button>가입하기</button></a>
     <%
     	} else {
     %>
     	<span>안녕하세요, <%=nickname %>님</span>
-    	<a class="logout" href="logout.jsp">로그아웃</a>
+    	<a class="logout" href="login/logout.jsp">로그아웃</a>
     <%	
     	}
     %>

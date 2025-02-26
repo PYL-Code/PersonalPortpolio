@@ -217,18 +217,18 @@ int cmnt_like=0;
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
     <div>
     <% 
     	if (userid == null) {
     %>
-        <a href="login_form.jsp"><button>로그인</button></a>
-        <a href="signup_form.jsp"><button>가입하기</button></a>
+        <a href="login/login_form.jsp"><button>로그인</button></a>
+        <a href="login/signup_form.jsp"><button>가입하기</button></a>
     <%
     	} else {
     %>
     	<span>안녕하세요, <%=nickname %>님</span>
-    	<a class="logout" href="logout.jsp">로그아웃</a>
+    	<a class="logout" href="login/logout.jsp">로그아웃</a>
     <%	
     	}
     %>
@@ -281,8 +281,11 @@ int cmnt_like=0;
 			  <%}%>
 			  	<a href="addlikeCmnt.jsp?cmnt_no=<%=cmnt_no %>&post_no=<%=post_no %>"><img alt="like" src="./img/3643770_favorite_heart_like_likes_love_icon.png" /></a>
 				<span><%=cmnt_date %></span>
-				<a href="delCmnt.jsp?cmnt_no=<%=cmnt_no %>&post_no=<%=post_no %>"><img src="./img/352548_three dots_icon.png"/></a>
+				<a href="javascript:void(0)" class="delete-btn" data-userid="<%=userid%>" data-cmnt_id="<%=cmnt_id%>" data-cmnt_no="<%=cmnt_no%>" data-post_no="<%=post_no%>">
+				    <img src="./img/352548_three dots_icon.png"/>
+				</a>
 			</div>
+			
 	<%
 		}
 	} catch (Exception e) {
@@ -293,6 +296,28 @@ int cmnt_like=0;
 		if(conn != null) {try {conn.close(); } catch(SQLException e) {e.printStackTrace();}}
 	}
 	%>
+		<script>
+		    document.querySelectorAll('.delete-btn').forEach(btn => {
+		        btn.addEventListener('click', function() {
+		            let userid = this.getAttribute('data-userid');
+		            let cmnt_id = this.getAttribute('data-cmnt_id');
+		            let cmnt_no = this.getAttribute('data-cmnt_no');
+		            let post_no = this.getAttribute('data-post_no');
+		
+		            deletePost(userid, cmnt_id, cmnt_no, post_no);
+		        });
+		    });
+		
+		    function deletePost(userid, cmnt_id, cmnt_no, post_no) {
+		        if (confirm('이 댓글을 삭제하시겠습니까?')) {
+		            if (userid == cmnt_id) {
+		                location.href = 'delCmnt.jsp?cmnt_no=' + cmnt_no + '&post_no=' + post_no;
+		            } else {
+		                alert("삭제 권한이 없습니다.");
+		            }
+		        }
+		    }
+		</script>
 		</div>
 		<div class="writecmnt">
 			<form action="uploadCmnt.jsp">

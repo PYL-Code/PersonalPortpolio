@@ -70,7 +70,7 @@
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="index.jsp">Instagram</a>
+    <a class="logo" href="${pageContext.request.contextPath}/index.jsp">Instagram</a>
 </div>
 <div>
 	<div>
@@ -85,7 +85,7 @@
 	<div>
 		<span>기존에 사용 중이거나 사용 예정인 아이디나 비밀번호를 절대 사용하지 마세요.</span>
 		<span>계정이 있으신가요?</span>
-		<a href="login_form.jsp?signupCheck=y">로그인</a>
+		<a href="login_form.jsp">로그인</a>
 	</div>
 </div>
 <div class="footer">
