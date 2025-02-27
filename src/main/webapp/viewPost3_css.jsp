@@ -42,7 +42,6 @@ String cmnt_no = "";
 String cmnt_id = "";
 String cmnt_txt = "";
 String cmnt_date = "";
-String cmnt_userid = "";
 int cmnt_like=0;
 
 %>
@@ -281,8 +280,7 @@ int cmnt_like=0;
 		
 		while(rset.next()){
 			cmnt_no = rset.getString("cmnt_no");
-			//cmnt_user_id = rset.getString("user_id");
-			//cmnt_user_nick = rset.getString("");
+			cmnt_id = rset.getString("cmnt_id");
 			cmnt_txt = rset.getString("cmnt_txt");
 			cmnt_date = rset.getString("cmnt_date");
 			cmnt_like = rset.getInt("cmnt_like");
@@ -339,23 +337,11 @@ int cmnt_like=0;
 		</script>
 		</div>
 		<div class="writecmnt">
-			<form action="uploadCmnt.jsp" onsubmit="return cmntLogincheck();">
+			<form action="uploadCmnt.jsp">
 				<input type="text" name="cmnt_txt" placeholder="댓글 달기..." />
 				<input type="hidden" name="post_no" value="<%=post_no%>"/>
 				<input type="submit" value="게시" />
 			</form>
-			<script>
-				let userid = "<%=userid%>";
-				
-				function cmntLogincheck() {
-					if (!userid || userid == "null") {
-						alert("로그인이 필요합니다.");
-						location.href = 'login/login_form.jsp';
-						return false;
-					}
-					return true;
-				}
-			</script>
 		</div>
 	</div>
 </div>

@@ -3,12 +3,9 @@
 <%@ page import="java.sql.*" %>
 <%
 String post_no = request.getParameter("post_no");
-String post_txt = request.getParameter("post_txt");
-
-session.setAttribute("post_no", post_no);
 
 String url = "jdbc:mysql://localhost:3306/spring5fs";
-String sql = "update post set post_txt='"+ post_txt +"' where post_no=" + post_no;
+String sql = "update post set post_like=post_like+1 where post_no=" + post_no;
 Connection conn = null;
 Statement stmt = null;
 ResultSet rset = null;

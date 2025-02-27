@@ -10,7 +10,7 @@ String post_no = request.getParameter("post_no");
 
 if(userid == null || !userid.equals("admin")) {
 	String pastUrl = request.getHeader("referer");
-	response.sendRedirect(pastUrl);
+	response.sendRedirect("viewPost.jsp?postno=" + post_no);
 }
 
 

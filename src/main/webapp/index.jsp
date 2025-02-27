@@ -182,8 +182,23 @@ try {
     <div class="details">
         <div class="username">
             <span>314_lim</span>
-            <button>팔로우</button>
-            <a href="uploadPost_form.jsp"><button>게시물 업로드</button></a>
+            <a href="https://www.instagram.com/314_lim/"><button>팔로우</button></a>
+            <a href="javascript:void(0)" onclick="uploadPost('<%=userid%>')"><button>게시물 업로드</button></a>
+            <%System.out.println(userid); %>
+            
+            <!-- 게시물 업로드 버튼 클릭 시 -->
+            <script>
+            	function uploadPost(userid) {
+            		if ( userid === 'admin' ) {
+            			location.href = 'uploadPost_form.jsp';
+            		} else {
+            			alert("접근 권한이 없습니다.");
+            			if (!userid || userid === "null") {
+            				location.href = 'login/login_form.jsp'
+            			}
+            		}
+            	}
+            </script>
         </div>
         <div class="stats">
             <span>게시물 <%=postcount %></span><span>팔로워 3.14천</span><span>팔로우 314</span>
@@ -225,7 +240,7 @@ try {
 </div>
 <div class="footer">
     <a href="#">소개</a>
-    <a href="#">블로그</a>
+    <a href="https://blog.naver.com/314lim">블로그</a>
     <a href="#">개인정보처리방침</a>
     <a href="#">약관</a>
     <p>ⓒ 2025. 박예림 All rights reserved</p>
