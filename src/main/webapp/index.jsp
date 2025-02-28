@@ -184,7 +184,7 @@ try {
             <span>314_lim</span>
             <a href="https://www.instagram.com/314_lim/"><button>팔로우</button></a>
             <a href="javascript:void(0)" onclick="uploadPost('<%=userid%>')"><button>게시물 업로드</button></a>
-            <%System.out.println(userid); %>
+            <%//System.out.println(userid); %>
             
             <!-- 게시물 업로드 버튼 클릭 시 -->
             <script>
@@ -193,7 +193,7 @@ try {
             			location.href = 'uploadPost_form.jsp';
             		} else {
             			alert("접근 권한이 없습니다.");
-            			if (!userid || userid === "null") {
+            			if (!userid || userid === 'null') {
             				location.href = 'login/login_form.jsp'
             			}
             		}
@@ -223,7 +223,7 @@ try {
         while(rset.next()){
             %>
             <div>
-              <a href="viewPost.jsp?post_no=<%=rset.getInt("post_no") %>">
+              <a href="viewPost3_css.jsp?post_no=<%=rset.getInt("post_no") %>">
                 <img src="https://placehold.co/250x250"/>
               </a>
             </div>

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String userid = (String) session.getAttribute("userid");
+
+if(userid != null) {
+	response.sendRedirect("../index.jsp");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,83 +54,86 @@
 	}
 	
 	/* 메인 컨테이너 스타일 */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 350px;
-}
-
-/* 회원가입 박스 스타일 */
-.signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 30px;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
-    text-align: center;
-    width: 100%;
-    margin-top: 50px;
-}
-
-.signup span {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-/* 입력 필드 스타일 */
-.signup input[type="text"],
-.signup input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 8px;
-    border: 1px solid #dbdbdb;
-    border-radius: 3px;
-    background-color: #fafafa;
-    font-size: 14px;
-}
-
-/* 가입 버튼 스타일 */
-.signup input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #0095f6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.signup input[type="submit"]:hover {
-    background-color: #0077cc;
-}
-
-/* 로그인 안내 박스 스타일 */
-.toLogin {
-    margin-top: 15px;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
-    background-color: white;
-    width: 100%;
-}
-
-.toLogin a {
-    color: #0095f6;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.toLogin a:hover {
-    text-decoration: underline;
-}
+	.container {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    width: 100%;
+	    max-width: 350px;
+	}
 	
+	/* 회원가입 박스 스타일 */
+	.signup {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    background-color: white;
+	    padding: 30px;
+	    border: 1px solid #dbdbdb;
+	    border-radius: 5px;
+	    text-align: center;
+	    width: 100%;
+	    margin-top: 50px;
+	}
+	
+	.signup span {
+	    font-size: 24px;
+	        font-weight: bold;
+	        display: block;
+	        margin-bottom: 20px;
+	}
+	
+	/* 입력 필드 스타일 */
+	.signup input[type="text"],
+	.signup input[type="password"] {
+	    width: 100%;
+	    padding: 10px;
+	    margin-bottom: 8px;
+	    border: 1px solid #dbdbdb;
+	    border-radius: 3px;
+	    background-color: #fafafa;
+	    font-size: 14px;
+	}
+	
+	/* 가입 버튼 스타일 */
+	.signup input[type="submit"] {
+	    width: 100%;
+	    padding: 10px;
+	    background-color: #0095f6;
+	    color: white;
+	    border: none;
+	    border-radius: 5px;
+	    font-weight: bold;
+	    cursor: pointer;
+	    margin-top: 10px;
+	    font-size: 14px;
+	}
+	
+	.signup input[type="submit"]:hover {
+	    background-color: #0078d4;
+	}
+	
+	/* 로그인 안내 박스 스타일 */
+	.toLogin {
+	    margin-top: 10px;
+	    padding: 15px;
+	    background-color: #fff;
+	    border: 1px solid #dbdbdb;
+	    width: 350px;
+	    text-align: center;
+	    border-radius: 5px;
+	}
+	
+	.toLogin a {
+	    color: #0095f6;
+        text-decoration: none;
+        font-weight: bold;
+	}
+	
+	.toLogin a:hover {
+	    text-decoration: underline;
+	}
+		
 	.footer {
     position: absolute;
     bottom: 10px;

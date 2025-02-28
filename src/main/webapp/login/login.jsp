@@ -4,6 +4,7 @@
 <%
 	String userid = request.getParameter("userid");
 	String password = request.getParameter("password");
+	String pastUrl = request.getParameter("pastUrl");
 	
 	String url = "jdbc:mysql://localhost:3306/spring5fs";
 	String sql = "select * from users where user_id=? ";
@@ -40,12 +41,14 @@
 		session.setAttribute("userid", userid);
 		session.setAttribute("nickname", user_nick);
 		//System.out.println("로그인 성공!");
+		//System.out.println(pastUrl);
 		
-		response.sendRedirect("../index.jsp");
+		if (pastUrl.equals("http://localhost:8089/pesonal_portfolio_JSP/login/signup_form.jsp")) {
+			response.sendRedirect("../index.jsp");
+		} else {
+			response.sendRedirect(pastUrl);
+		}
 	} else {
-	%>
-		<script>alert("잘못된 아이디 혹은 비밀번호입니다.");</script>
-	<%
 		response.sendRedirect("login_form.jsp"); //다시 로그인하도록
 		
 	}

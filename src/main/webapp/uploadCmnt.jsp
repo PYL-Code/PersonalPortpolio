@@ -3,13 +3,12 @@
 <%@ page import="java.sql.*" %>
 <%
 String post_no = request.getParameter("post_no");
+String userid = request.getParameter("userid");
 String cmnt_txt = request.getParameter("cmnt_txt");
 
-String id = "testid";
-
 String url = "jdbc:mysql://localhost:3306/spring5fs";
-String sql = "insert into cmnt (cmnt_id, cmnt_txt, cmnt_date, cmnt_like, post_no) " 
-				+ "values ('"+ id +"', '"+ cmnt_txt +"', current_date(), 0, "+ post_no +")";
+String sql = "insert into cmnt (cmnt_txt, cmnt_date, cmnt_like, post_no, user_id) " 
+				+ "values ('"+ cmnt_txt +"', current_date(), 0, " + post_no + ", '" + userid + "')";
 Connection conn = null;
 Statement stmt = null;
 ResultSet rset = null;

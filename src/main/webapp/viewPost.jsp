@@ -9,7 +9,9 @@ String post_no = request.getParameter("post_no");
 
 String url = "jdbc:mysql://localhost:3306/spring5fs";
 String sql_post = "select * from post where post_no=" + post_no;
-String sql_cmnt = "select * from cmnt where post_no=" + post_no;
+String sql_cmnt = "select c.cmnt_no, c.cmnt_txt, c.cmnt_date, c.cmnt_like, c.user_id, u.user_nick " +
+				"from cmnt c left join users u using (user_id) " +
+				"where c.post_no=" + post_no;
 Connection conn = null;
 Statement stmt = null;
 ResultSet rset = null;
@@ -39,10 +41,10 @@ try{
 }
 
 String cmnt_no = "";
-String cmnt_id = "";
 String cmnt_txt = "";
 String cmnt_date = "";
 String cmnt_userid = "";
+String cmnt_usernick = "";
 int cmnt_like=0;
 
 %>
@@ -236,8 +238,7 @@ int cmnt_like=0;
     </div>
 </div>
 <div class="container">
-	<div class="viewpost">
-		<div class="userinfo">
+	<div class="userinfo">
 		<img src="https://placehold.co/50x50"/>
 		<span>314_lim</span>
 		<a href="javascript:void(0)" onclick="updatePost(<%=post_no%>, '<%=userid%>')"><img src="./img/352548_three dots_icon.png" /></a>
@@ -247,13 +248,14 @@ int cmnt_like=0;
 					location.href = 'editPost_form.jsp?post_no=' + post_no;
 				} else {
 					alert('접근 권한이 없습니다.')
-					if (!userid || userid === "null") { //userid가 null이거나 "null"일때
-						location.herf = 'login/login_form.jsp';
-					}
+            			if (!userid || userid === 'null') {
+            				location.href = 'login/login_form.jsp'
+            			}
 				}
 			}
 		</script>
-		</div>
+	</div>
+	<div class="viewpost">
 		<div class="post">
 			<img src="https://placehold.co/750x750" />
 			<div>
@@ -273,23 +275,26 @@ int cmnt_like=0;
 				<span><%=post_date %></span>
 			</div>
 		</div>
-		<div class="viewCmnt">
+	</div>
+	<div class="viewcmnt">
+		<div class="cmntlist">
 	<%
 	try{
 		stmt = conn.createStatement();
 		rset = stmt.executeQuery(sql_cmnt);
 		
 		while(rset.next()){
-			cmnt_no = rset.getString("cmnt_no");
-			//cmnt_user_id = rset.getString("user_id");
-			//cmnt_user_nick = rset.getString("");
-			cmnt_txt = rset.getString("cmnt_txt");
-			cmnt_date = rset.getString("cmnt_date");
-			cmnt_like = rset.getInt("cmnt_like");
+			cmnt_no = rset.getString("c.cmnt_no");
+			cmnt_txt = rset.getString("c.cmnt_txt");
+			cmnt_date = rset.getString("c.cmnt_date");
+			cmnt_userid = rset.getString("c.user_id");
+			cmnt_usernick = rset.getString("u.user_nick");
+			cmnt_like = rset.getInt("c.cmnt_like");
 	%>		
 			<div class="cmntinfo">
 				<img src="https://placehold.co/50x50" />
-				<span><%=cmnt_id %></span>
+				<span><%=cmnt_usernick %></span>
+				<span>(<%=cmnt_userid %>)</span>
 				<span><%=cmnt_txt %></span>
 				<% 
 				if(cmnt_like != 0) {
@@ -300,7 +305,7 @@ int cmnt_like=0;
 			  		<img alt="like" src="./img/3643770_favorite_heart_like_likes_love_icon.png" />
 			  	</a>
 				<span><%=cmnt_date %></span>
-				<a href="javascript:void(0)" class="delete-btn" data-userid="<%=userid%>" data-cmnt_id="<%=cmnt_id%>" data-cmnt_no="<%=cmnt_no%>" data-post_no="<%=post_no%>">
+				<a href="javascript:void(0)" class="delete-btn" data-userid="<%=userid%>" data-cmnt_id="<%=cmnt_userid%>" data-cmnt_no="<%=cmnt_no%>" data-post_no="<%=post_no%>">
 				    <img src="./img/352548_three dots_icon.png"/>
 				</a>
 			</div>
@@ -333,6 +338,9 @@ int cmnt_like=0;
 		                location.href = 'delCmnt.jsp?cmnt_no=' + cmnt_no + '&post_no=' + post_no;
 		            } else {
 		                alert("삭제 권한이 없습니다.");
+		                if (!userid || userid === 'null') {
+		                	location.href = 'login/login_form.jsp';
+		                }
 		            }
 		        }
 		    }
@@ -342,13 +350,14 @@ int cmnt_like=0;
 			<form action="uploadCmnt.jsp" onsubmit="return cmntLogincheck();">
 				<input type="text" name="cmnt_txt" placeholder="댓글 달기..." />
 				<input type="hidden" name="post_no" value="<%=post_no%>"/>
+				<input type="hidden" name="userid" value="<%=userid%>" />
 				<input type="submit" value="게시" />
 			</form>
 			<script>
 				let userid = "<%=userid%>";
 				
 				function cmntLogincheck() {
-					if (!userid || userid == "null") {
+					if (!userid || userid == 'null') {
 						alert("로그인이 필요합니다.");
 						location.href = 'login/login_form.jsp';
 						return false;

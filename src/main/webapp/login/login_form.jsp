@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String signupCheck = "";
-	signupCheck = request.getParameter("signupCheck");
+	String pastUrl = request.getHeader("referer");
+	String userid = (String) session.getAttribute("userid");
+	
+	if(userid != null) {
+		response.sendRedirect("../index.jsp");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -126,7 +130,7 @@
     <form action="login.jsp">
         <input type="text" name="userid" placeholder="아이디"/>
         <input type="password" name="password" placeholder="비밀번호" />
-        <input type="hidden" name="signupPage" value=<%=signupCheck %> />
+        <input type="hidden" name="pastUrl" value=<%=pastUrl%> />
         <input type="submit" value="로그인" />
     </form>
 </div>
