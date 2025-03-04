@@ -135,6 +135,8 @@ try {
     .posts img {
         width: 100%;
         border-radius: 5px;
+        max-width: 300px;
+        max-height: 300px;
     }
     .footer {
     /*position: absolute;*/
@@ -223,7 +225,7 @@ try {
         while(rset.next()){
             %>
             <div>
-              <a href="viewPost3_css.jsp?post_no=<%=rset.getInt("post_no") %>">
+              <a href="viewPost.jsp?post_no=<%=rset.getInt("post_no") %>">
                 <img src="https://placehold.co/250x250"/>
               </a>
             </div>

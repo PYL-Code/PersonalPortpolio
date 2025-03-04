@@ -120,13 +120,14 @@ try{
 </div>
 <div class="post">
 	<form action="editPost.jsp">
-	<div>
-		<span>게시물 수정</span>
-		<input type="submit" value="완료" />
-	</div>
+		<div>
+			<span>게시물 수정</span>
+			<input type="submit" value="완료" />
+		</div>
 		<input type="text" name="post_txt" value="<%=post_txt %>" />
 		<input type="hidden" name="post_no" value="<%=post_no %>" />
 	</form>
+	<a href="delPost.jsp?post_no=<%=post_no%>"><button>삭제</button></a>
 </div>
 <div class="footer">
     <a href="#">소개</a>

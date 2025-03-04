@@ -93,7 +93,7 @@ if(userid == null || !userid.equals("admin")) {
     </div>
 </div>
 <div class="post">
-	<form action="uploadPost.jsp">
+	<form action="uploadPost.jsp" method="post" enctype="multipart/form-data">
 	<div>
 		<span>새 게시물 만들기</span>
 		<input type="submit" value="공유하기" />
