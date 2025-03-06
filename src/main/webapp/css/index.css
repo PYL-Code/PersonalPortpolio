@@ -1,0 +1,121 @@
+@charset "UTF-8";
+	body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 15px 20px;
+        border-bottom: 1px solid #dbdbdb;
+    }
+    .header .logo {
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #262626;
+    }
+    .header .logout {
+    	font-weight: bold;
+    	text-decoration: none;
+    	color: #0095f6;
+    }
+    .header div {
+        display: flex;
+        gap: 10px;
+    }
+    .header button {
+        background-color: #0095f6;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .info {
+        display: flex;
+        align-items: center;
+        max-width: 935px;
+        margin: 40px auto;
+        gap: 30px;
+        justify-content: center;
+    }
+    .info button {
+        background-color: #dbdbdb;
+        color: black;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .info img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+    .info .details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .info .username {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .info h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+    .info .stats {
+        display: flex;
+        gap: 15px;
+    }
+    .highlight {
+        max-width: 935px;
+        margin: 20px auto;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+    .highlight img {
+        border-radius: 50%;
+    }
+    .posts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        justify-content: center;
+        max-width: 935px;
+        margin: 20px auto;
+    }
+    .posts img {
+        width: 100%;
+        border-radius: 5px;
+        max-width: 300px;
+        max-height: 300px;
+    }
+    .footer {
+    /*position: absolute;*/
+    bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #8e8e8e;
+    width: 100%;
+    border-top: 1px solid #dbdbdb; /* 상단 border 추가 */
+    padding-top: 10px; /* border와 내용 간격 */
+	}
+	
+	.footer a {
+	    text-decoration: none;
+	    color: #8e8e8e;
+	    margin: 0 5px;
+	}
+	
+	.footer p {
+	    margin-top: 10px; /* a 태그와 간격 추가 */
+	}
